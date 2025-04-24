@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DaTina Consulting - Data Analytics & Business Solutions</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#30E3FF',secondary:'#50E020'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+scroll-behavior: smooth;
+}
+.language-switcher input:checked + .slider {
+background-color: #30E3FF;
+}
+.language-switcher input:checked + .slider:before {
+transform: translateX(26px);
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+.service-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(48, 227, 255, 0.15);
+}
+.whatsapp-widget {
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 1000;
+}
+.data-chart {
+height: 300px;
+width: 100%;
+}
+input:focus, textarea:focus {
+outline: none;
+border-color: #30E3FF;
+}
+.carousel {
+scroll-snap-type: x mandatory;
+scroll-behavior: smooth;
+}
+.carousel-item {
+scroll-snap-align: start;
+}
+.gradient-text {
+background: linear-gradient(90deg, #30E3FF, #50E020);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=Professional%2520data%2520analytics%2520visualization%2520with%2520futuristic%2520digital%2520interface%2520showing%2520charts%2520graphs%2520and%2520data%2520flows%2520with%2520blue%2520and%2520green%2520glowing%2520elements%2520on%2520dark%2520background%2520suitable%2520for%2520tech%2520company%2520website%2520hero%2520section%2520high%2520quality%2520professional%2520clean%2520modern&width=1920&height=1080&seq=12345&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+</style>
+</head>
+<body class="bg-white text-gray-800">
+<!-- Header/Navigation -->
+<header class="fixed w-full bg-[#0f172a] text-white z-50 shadow-lg">
+<div class="container mx-auto px-4 py-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<div class="text-3xl font-bold">
+<span class="text-primary">Da</span><span class="text-white">T</span><span class="text-primary">i</span><span class="text-white">na</span>
+<span class="text-secondary text-3xl">•</span>
+</div>
+<span class="ml-2 text-lg text-gray-300">Consulting</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a href="#home" class="hover:text-primary transition-colors" data-i18n="nav.home">Home</a>
+<a href="#services" class="hover:text-primary transition-colors" data-i18n="nav.services">Services</a>
+<a href="#about" class="hover:text-primary transition-colors" data-i18n="nav.about">About</a>
+<a href="#insights" class="hover:text-primary transition-colors" data-i18n="nav.insights">Insights</a>
+<a href="#careers" class="hover:text-primary transition-colors" data-i18n="nav.careers">Careers</a>
+<a href="#contact" class="hover:text-primary transition-colors" data-i18n="nav.contact">Contact</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="language-switcher flex items-center">
+<span class="mr-2 text-sm">EN</span>
+<label class="relative inline-block w-12 h-6">
+<input type="checkbox" class="opacity-0 w-0 h-0">
+<span class="slider absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-700 rounded-full"></span>
+</label>
+<span class="ml-2 text-sm">FR</span>
+</div>
+<a href="#contact" class="hidden md:block bg-primary text-[#0f172a] px-5 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">Get in Touch</a>
+<button class="md:hidden text-white focus:outline-none w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="home" class="hero-section pt-28 pb-20 relative">
+<div class="absolute inset-0 bg-[#0f172a] bg-opacity-80"></div>
+<div class="container mx-auto px-4 relative z-10">
+<div class="flex flex-col md:flex-row items-center">
+<div class="md:w-1/2 mb-10 md:mb-0">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+<span class="block" data-i18n="hero.title">Humans Lie,</span>
+<span class="gradient-text" data-i18n="hero.subtitle">Data Doesn't.</span>
+</h1>
+<p class="text-xl text-gray-300 mb-8" data-i18n="hero.description">Let us understand your data to scale your business. Transform insights into strategic advantages with DaTina Consulting.</p>
+<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<a href="#services" class="bg-primary text-[#0f172a] px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all text-center whitespace-nowrap" data-i18n="hero.discoverServices">Discover Our Services</a>
+<a href="#contact" class="border border-white text-white px-8 py-3 !rounded-button font-medium hover:bg-white hover:bg-opacity-10 transition-all text-center whitespace-nowrap" data-i18n="hero.contactUs">Contact Us</a>
+</div>
+</div>
+<div class="md:w-1/2 data-chart" id="heroChart"></div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Comprehensive solutions tailored to your business needs. We combine expertise with innovation to deliver exceptional results.</p>
+</div>
+<div class="relative">
+<div class="carousel flex overflow-x-auto pb-8 -mx-4 px-4 space-x-6 hide-scrollbar">
+<!-- Data Analytics -->
+<div class="carousel-item flex-shrink-0 w-full md:w-1/3 lg:w-1/4 min-w-[280px]">
+<div class="service-card bg-white rounded-lg shadow-md p-6 h-full border border-gray-100">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-bar-chart-box-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Data Analytics</h3>
+<p class="text-gray-600 mb-4">Transform raw data into actionable insights. Our data analytics services help you make informed decisions and drive business growth.</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Predictive analytics</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Data visualization</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Business intelligence</span>
+</li>
+</ul>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Learn more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Web Development -->
+<div class="carousel-item flex-shrink-0 w-full md:w-1/3 lg:w-1/4 min-w-[280px]">
+<div class="service-card bg-white rounded-lg shadow-md p-6 h-full border border-gray-100">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-code-s-slash-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Web Development</h3>
+<p class="text-gray-600 mb-4">Custom websites tailored to your unique business needs. We create responsive, user-friendly, and visually appealing digital experiences.</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Responsive design</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>E-commerce solutions</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>CMS implementation</span>
+</li>
+</ul>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Learn more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Process Automation -->
+<div class="carousel-item flex-shrink-0 w-full md:w-1/3 lg:w-1/4 min-w-[280px]">
+<div class="service-card bg-white rounded-lg shadow-md p-6 h-full border border-gray-100">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-settings-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Process Automation</h3>
+<p class="text-gray-600 mb-4">Streamline operations and boost efficiency. Our automation solutions eliminate repetitive tasks and optimize workflows.</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Workflow optimization</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>RPA implementation</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Process reengineering</span>
+</li>
+</ul>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Learn more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Marketing -->
+<div class="carousel-item flex-shrink-0 w-full md:w-1/3 lg:w-1/4 min-w-[280px]">
+<div class="service-card bg-white rounded-lg shadow-md p-6 h-full border border-gray-100">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-megaphone-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Marketing</h3>
+<p class="text-gray-600 mb-4">Enhance brand visibility and engagement. Our marketing strategies help you reach your target audience and drive conversions.</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Digital marketing</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Content strategy</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Social media management</span>
+</li>
+</ul>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Learn more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Business Analytics -->
+<div class="carousel-item flex-shrink-0 w-full md:w-1/3 lg:w-1/4 min-w-[280px]">
+<div class="service-card bg-white rounded-lg shadow-md p-6 h-full border border-gray-100">
+<div class="w-14 h-14 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-line-chart-line ri-xl text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-3">Business Analytics</h3>
+<p class="text-gray-600 mb-4">Comprehensive analysis to inform strategic planning. We help you identify opportunities and mitigate risks.</p>
+<ul class="text-gray-600 mb-6 space-y-2">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Market research</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Competitive analysis</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mr-2 mt-1"></i>
+<span>Performance metrics</span>
+</li>
+</ul>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Learn more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8 space-x-2">
+<button class="w-3 h-3 rounded-full bg-primary"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300"></button>
+<button class="w-3 h-3 rounded-full bg-gray-300"></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section id="about" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose DaTina</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">We simplify complexity and deliver exceptional results. Our approach is data-driven, client-focused, and results-oriented.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center mb-20">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+<div class="p-1 bg-gradient-to-r from-primary to-secondary rounded-lg">
+<img src="https://readdy.ai/api/search-image?query=Professional%2520business%2520meeting%2520with%2520diverse%2520team%2520analyzing%2520data%2520on%2520digital%2520screens%2520with%2520charts%2520and%2520graphs%2520in%2520modern%2520office%2520environment%2520with%2520blue%2520and%2520green%2520accent%2520lighting%2520professional%2520corporate%2520setting&width=600&height=400&seq=67890&orientation=landscape" alt="Data Analysis Meeting" class="rounded-lg object-cover w-full h-full object-top">
+</div>
+</div>
+<div class="md:w-1/2">
+<div class="bg-gray-50 p-8 rounded-lg border border-gray-100 shadow-sm">
+<h3 class="text-2xl font-semibold mb-6">Simplify Your Business Processes</h3>
+<p class="text-gray-600 mb-6 italic">"You remember when Steve Jobs turned so many buttons to one on a phone? Do the same to your business."</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-award-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Expertise & Experience</h4>
+<p class="text-gray-600">Our team brings years of industry experience and specialized knowledge to every project.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-customer-service-2-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Client-Centric Approach</h4>
+<p class="text-gray-600">We prioritize your needs and goals, ensuring solutions that align with your business objectives.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-line-chart-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Data-Driven Results</h4>
+<p class="text-gray-600">Our strategies are backed by comprehensive data analysis and proven methodologies.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="text-4xl font-bold text-primary mb-2">98%</div>
+<p class="text-gray-600">Client Satisfaction Rate</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="text-4xl font-bold text-primary mb-2">10+</div>
+<p class="text-gray-600">Projects Completed</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="text-4xl font-bold text-primary mb-2">35%</div>
+<p class="text-gray-600">Average Efficiency Increase</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="text-4xl font-bold text-primary mb-2">5+</div>
+<p class="text-gray-600">Years of Experience</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission & Values -->
+<section class="py-20 bg-[#0f172a] text-white">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Our Mission & Vision</h2>
+<p class="text-gray-300 mb-8">At DaTina Consulting, we are committed to empowering businesses through data-driven insights and innovative solutions. Our mission is to transform complex data into strategic advantages for our clients.</p>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-eye-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Vision</h4>
+<p class="text-gray-300">To be the leading data analytics and business solutions provider, recognized for our innovation, expertise, and commitment to client success.</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-compass-3-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Mission</h4>
+<p class="text-gray-300">To deliver exceptional value through data-driven insights and innovative solutions that help our clients achieve their business objectives.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="md:w-1/2">
+<h3 class="text-2xl font-semibold mb-6">Our Core Values</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="bg-white bg-opacity-5 p-6 rounded-lg">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-shield-check-line ri-lg text-primary"></i>
+</div>
+<h4 class="font-semibold mb-2">Integrity</h4>
+<p class="text-gray-300">We uphold the highest ethical standards in all our interactions and decisions.</p>
+</div>
+<div class="bg-white bg-opacity-5 p-6 rounded-lg">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-lightbulb-line ri-lg text-primary"></i>
+</div>
+<h4 class="font-semibold mb-2">Innovation</h4>
+<p class="text-gray-300">We continuously seek new and better ways to solve problems and create value.</p>
+</div>
+<div class="bg-white bg-opacity-5 p-6 rounded-lg">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-team-line ri-lg text-primary"></i>
+</div>
+<h4 class="font-semibold mb-2">Collaboration</h4>
+<p class="text-gray-300">We work together with our clients to achieve shared goals and mutual success.</p>
+</div>
+<div class="bg-white bg-opacity-5 p-6 rounded-lg">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+<i class="ri-bar-chart-grouped-line ri-lg text-primary"></i>
+</div>
+<h4 class="font-semibold mb-2">Excellence</h4>
+<p class="text-gray-300">We strive for excellence in everything we do, delivering exceptional results.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Section -->
+<section id="insights" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Insights & Resources</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Stay updated with the latest industry trends, insights, and news. Our experts share valuable knowledge to help you stay ahead.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+<!-- Article 1 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+<img src="https://readdy.ai/api/search-image?query=Data%2520visualization%2520dashboard%2520with%2520charts%2520and%2520graphs%2520showing%2520business%2520analytics%2520metrics%2520on%2520computer%2520screen%2520professional%2520clean%2520modern%2520blue%2520theme&width=600&height=400&seq=12346&orientation=landscape" alt="Data Analytics Trends" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="flex items-center mb-4">
+<span class="text-xs font-medium bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full">Data Analytics</span>
+<span class="text-xs text-gray-500 ml-auto">April 18, 2025</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">5 Data Analytics Trends to Watch in 2025</h3>
+<p class="text-gray-600 mb-4">Explore the latest trends in data analytics and how they're reshaping business strategies across industries.</p>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Read more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Article 2 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+<img src="https://readdy.ai/api/search-image?query=Web%2520developer%2520working%2520on%2520responsive%2520website%2520design%2520with%2520multiple%2520screens%2520showing%2520code%2520and%2520layout%2520professional%2520clean%2520modern%2520workspace&width=600&height=400&seq=12347&orientation=landscape" alt="Web Development Best Practices" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="flex items-center mb-4">
+<span class="text-xs font-medium bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full">Web Development</span>
+<span class="text-xs text-gray-500 ml-auto">April 10, 2025</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">The Future of Web Development: What to Expect</h3>
+<p class="text-gray-600 mb-4">Discover the emerging technologies and methodologies shaping the future of web development.</p>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Read more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<!-- Article 3 -->
+<div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+<img src="https://readdy.ai/api/search-image?query=Business%2520automation%2520concept%2520with%2520robotic%2520process%2520automation%2520workflow%2520diagram%2520on%2520digital%2520screen%2520professional%2520clean%2520modern%2520tech%2520visualization&width=600&height=400&seq=12348&orientation=landscape" alt="Process Automation Benefits" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="flex items-center mb-4">
+<span class="text-xs font-medium bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full">Automation</span>
+<span class="text-xs text-gray-500 ml-auto">April 5, 2025</span>
+</div>
+<h3 class="text-xl font-semibold mb-3">How Process Automation is Transforming Business Operations</h3>
+<p class="text-gray-600 mb-4">Learn how businesses are leveraging automation to streamline operations and boost productivity.</p>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+Read more
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+<!-- Newsletter -->
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 max-w-3xl mx-auto">
+<div class="text-center mb-6">
+<h3 class="text-2xl font-semibold mb-2">Subscribe to Our Newsletter</h3>
+<p class="text-gray-600">Stay updated with our latest insights, news, and industry trends.</p>
+</div>
+<form class="flex flex-col sm:flex-row gap-4">
+<input type="email" placeholder="Enter your email" class="flex-grow px-4 py-3 rounded-button border border-gray-300 focus:border-primary">
+<button type="submit" class="bg-primary text-[#0f172a] px-6 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">Subscribe</button>
+</form>
+</div>
+</div>
+</section>
+
+
+<!-- Careers Section 
+<section id="careers" class="py-20 bg-white">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Team</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">We're always looking for talented individuals to join our team. Explore our current openings and grow with us.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+//Job 1 
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-semibold">Senior Data Analyst</h3>
+<p class="text-gray-600">Full-time • Paris, France</p>
+</div>
+<span class="text-xs font-medium bg-green-100 text-green-800 px-3 py-1 rounded-full">New</span>
+</div>
+<p class="text-gray-600 mb-6">We're looking for an experienced Data Analyst to join our team. The ideal candidate will have strong analytical skills and experience with data visualization tools.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Python</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">SQL</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Tableau</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Machine Learning</span>
+</div>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+View details
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+//Job 2
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-semibold">Frontend Developer</h3>
+<p class="text-gray-600">Full-time • Paris, France</p>
+</div>
+</div>
+<p class="text-gray-600 mb-6">We're seeking a talented Frontend Developer to create responsive and user-friendly web applications. The ideal candidate will have experience with modern JavaScript frameworks.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">React</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">JavaScript</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">HTML/CSS</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Responsive Design</span>
+</div>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+View details
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+//Job 3
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-semibold">Marketing Specialist</h3>
+<p class="text-gray-600">Full-time • Paris, France</p>
+</div>
+</div>
+<p class="text-gray-600 mb-6">We're looking for a Marketing Specialist to develop and implement marketing strategies. The ideal candidate will have experience with digital marketing and content creation.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Digital Marketing</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Content Strategy</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">SEO</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Social Media</span>
+</div>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+View details
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+//Job 4
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-xl font-semibold">Business Analyst</h3>
+<p class="text-gray-600">Full-time • Paris, France</p>
+</div>
+<span class="text-xs font-medium bg-green-100 text-green-800 px-3 py-1 rounded-full">New</span>
+</div>
+<p class="text-gray-600 mb-6">We're seeking a Business Analyst to help identify business needs and develop solutions. The ideal candidate will have strong analytical and problem-solving skills.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Data Analysis</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Requirements Gathering</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Process Modeling</span>
+<span class="text-xs bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Business Strategy</span>
+</div>
+<a href="#" class="text-primary font-medium flex items-center hover:underline">
+View details
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<div class="text-center">
+<p class="text-gray-600 mb-6">Don't see a position that matches your skills? We're always interested in hearing from talented individuals.</p>
+<a href="#contact" class="bg-primary text-[#0f172a] px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all inline-block whitespace-nowrap">Contact Us</a>
+</div>
+</div>
+</section> -->
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Have questions or ready to start your project? Contact us today and let's discuss how we can help you achieve your business goals.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="lg:w-1/2">
+<form class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div>
+<label for="name" class="block text-gray-700 mb-2">Name</label>
+<input type="text" id="name" class="w-full px-4 py-3 rounded-button border border-gray-300 focus:border-primary" placeholder="Your name">
+</div>
+<div>
+<label for="email" class="block text-gray-700 mb-2">Email</label>
+<input type="email" id="email" class="w-full px-4 py-3 rounded-button border border-gray-300 focus:border-primary" placeholder="Your email">
+</div>
+</div>
+<div class="mb-6">
+<label for="subject" class="block text-gray-700 mb-2">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-3 rounded-button border border-gray-300 focus:border-primary" placeholder="Subject">
+</div>
+<div class="mb-6">
+<label for="message" class="block text-gray-700 mb-2">Message</label>
+<textarea id="message" rows="5" class="w-full px-4 py-3 rounded-button border border-gray-300 focus:border-primary" placeholder="Your message"></textarea>
+</div>
+<button type="submit" class="bg-primary text-[#0f172a] px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all w-full whitespace-nowrap">Send Message</button>
+</form>
+</div>
+<div class="lg:w-1/2">
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 mb-8">
+<h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-map-pin-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Location</h4>
+<p class="text-gray-600">Paris, France</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-mail-line ri-lg text-primary"></i>
+</div>
+<div>
+<h4 class="font-semibold mb-1">Email</h4>
+<p class="text-gray-600">datinaconsulting@gmail.com</p>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+<i class="ri-phone-line ri-lg text-primary"></i>
+</div>
+<div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+<h3 class="text-2xl font-semibold mb-6">Our Location</h3>
+<div class="rounded-lg overflow-hidden h-64 bg-cover bg-center" style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png')"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0f172a] text-white pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="flex items-center mb-6">
+<div class="text-3xl font-bold">
+<span class="text-primary">Da</span><span class="text-white">T</span><span class="text-primary">i</span><span class="text-white">na</span>
+<span class="text-secondary text-3xl">•</span>
+</div>
+</div>
+<p class="text-gray-400 mb-6">Empowering businesses through data-driven insights and innovative solutions.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-primary hover:bg-opacity-20 transition-colors">
+<i class="ri-linkedin-fill ri-lg text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-primary hover:bg-opacity-20 transition-colors">
+<i class="ri-twitter-fill ri-lg text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-primary hover:bg-opacity-20 transition-colors">
+<i class="ri-facebook-fill ri-lg text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-primary hover:bg-opacity-20 transition-colors">
+<i class="ri-instagram-fill ri-lg text-white"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Services</h3>
+<ul class="space-y-4">
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Data Analytics</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Web Development</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Process Automation</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Marketing</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Business Analytics</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Company</h3>
+<ul class="space-y-4">
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Careers</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Case Studies</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Blog</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+<p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and insights.</p>
+<form class="flex mb-4">
+<input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-button border-none flex-grow bg-white bg-opacity-10 text-white placeholder-gray-400">
+<button type="submit" class="bg-primary text-[#0f172a] px-4 py-2 rounded-r-button font-medium hover:bg-opacity-90 transition-all whitespace-nowrap">Subscribe</button>
+</form>
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-visa-fill ri-lg text-gray-400"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-mastercard-fill ri-lg text-gray-400"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-paypal-fill ri-lg text-gray-400"></i>
+</div>
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-apple-fill ri-lg text-gray-400"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 mb-4 md:mb-0">© 2025 DaTina Consulting. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-primary transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-primary transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-primary transition-colors">Cookie Policy</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- WhatsApp Widget -->
+<div class="whatsapp-widget">
+<a href="https:wa.me/33744843860" class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors">
+<i class="ri-whatsapp-line ri-2x text-white"></i>
+</a>
+</div>
+<script>
+const translations = {
+  en: {
+    nav: {
+      home: "Home",
+      services: "Services",
+      about: "About",
+      insights: "Insights",
+      careers: "Careers",
+      contact: "Contact",
+      getInTouch: "Get in Touch"
+    },
+    hero: {
+      title: "Humans Lie,",
+      subtitle: "Data Doesn't.",
+      description: "Let us understand your data to scale your business. Transform insights into strategic advantages with DaTina Consulting.",
+      discoverServices: "Discover Our Services",
+      contactUs: "Contact Us"
+    },
+    services: {
+      title: "Our Services",
+      description: "Comprehensive solutions tailored to your business needs. We combine expertise with innovation to deliver exceptional results."
+    },
+    // Add more English translations
+  },
+  fr: {
+    nav: {
+      home: "Accueil",
+      services: "Services",
+      about: "À propos",
+      insights: "Actualités",
+      careers: "Carrières",
+      contact: "Contact",
+      getInTouch: "Nous Contacter"
+    },
+    hero: {
+      title: "Les Humains Mentent,",
+      subtitle: "Les Données Non.",
+      description: "Laissez-nous comprendre vos données pour développer votre entreprise. Transformez les insights en avantages stratégiques avec DaTina Consulting.",
+      discoverServices: "Découvrir Nos Services",
+      contactUs: "Contactez-nous"
+    },
+    services: {
+      title: "Nos Services",
+      description: "Des solutions complètes adaptées aux besoins de votre entreprise. Nous combinons expertise et innovation pour offrir des résultats exceptionnels."
+    }
+    // Add more French translations
+  }
+};
+
+function updateContent(lang) {
+  // Update navigation
+  document.querySelectorAll('[data-i18n]').forEach(element => {
+    const key = element.getAttribute('data-i18n');
+    const keys = key.split('.');
+    let translation = translations[lang];
+    keys.forEach(k => {
+      translation = translation[k];
+    });
+    if (translation) {
+      element.textContent = translation;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Get saved language preference
+  const savedLang = localStorage.getItem('language') || 'en';
+  const languageSwitch = document.querySelector('.language-switcher input');
+  
+  // Set initial state
+  languageSwitch.checked = savedLang === 'fr';
+  updateContent(savedLang);
+  
+  // Language switch handler
+  languageSwitch.addEventListener('change', function() {
+    const newLang = this.checked ? 'fr' : 'en';
+    localStorage.setItem('language', newLang);
+    updateContent(newLang);
+  });
+
+  // Hero Chart
+  const heroChart = echarts.init(document.getElementById('heroChart'));
+const heroOption = {
+animation: false,
+grid: {
+top: 0,
+right: 0,
+bottom: 0,
+left: 0
+},
+xAxis: {
+type: 'category',
+data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+axisLine: {
+show: false
+},
+axisTick: {
+show: false
+},
+axisLabel: {
+show: false
+}
+},
+yAxis: {
+type: 'value',
+axisLine: {
+show: false
+},
+axisTick: {
+show: false
+},
+axisLabel: {
+show: false
+},
+splitLine: {
+show: false
+}
+},
+series: [
+{
+data: [120, 132, 101, 134, 90, 230, 210, 182, 191, 234, 290, 330],
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: {
+color: 'rgba(87, 181, 231, 1)',
+width: 3
+},
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(87, 181, 231, 0.3)'
+},
+{
+offset: 1,
+color: 'rgba(87, 181, 231, 0.1)'
+}
+])
+}
+},
+{
+data: [220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149],
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: {
+color: 'rgba(141, 211, 199, 1)',
+width: 3
+},
+areaStyle: {
+color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+{
+offset: 0,
+color: 'rgba(141, 211, 199, 0.3)'
+},
+{
+offset: 1,
+color: 'rgba(141, 211, 199, 0.1)'
+}
+])
+}
+}
+],
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.8)',
+textStyle: {
+color: '#1f2937'
+}
+}
+};
+heroChart.setOption(heroOption);
+// Language Switcher
+const languageSwitcher = document.querySelector('.language-switcher input');
+languageSwitcher.addEventListener('change', function() {
+// Toggle language logic would go here
+console.log('Language switched:', this.checked ? 'FR' : 'EN');
+});
+// Resize charts on window resize
+window.addEventListener('resize', function() {
+heroChart.resize();
+});
+});
+</script>
+</body>
+</html>
